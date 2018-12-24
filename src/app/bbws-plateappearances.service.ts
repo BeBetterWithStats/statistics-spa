@@ -1,35 +1,30 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+
+ 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Access-Control-Allow-Origin': '*' })
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class BbwsPlateappearancesService {
 
+  private base_url = 'http://localhost:8080/bbws/api';
+
   constructor(private http: HttpClient) { }
 
-  list(player:string) {
+  list(player:string):Observable<any> {
 
-    // const url = "http://localhost:8080/bbws/api/pa?search=" + player;
-    //return this.http.get( url);
-
-    if ( player.toUpperCase() == "BROWN") {
-      return [{
-        what: "SLUGGING_1B",
-        where: "CENTER_FIELD",
-        when: "6th"
-      },
-      {
-        what: "WALK",
-        where: "EMPTY",
-        when: "5th"
-      }];
-    } else {
-      return [{
-        error: true, 
-        message: "The player " + player + " does not exist in database."
-      }];
+    if ( player == undefined) {
+      // if not search term, return empty hero array.
+      console.log("ERROR -> Player must not be empty");
+      return of([]);
     }
-    
+
+    const url = `${this.base_url}/pa?search=${player}`;
+    return this.http.get( url);
   }
 }

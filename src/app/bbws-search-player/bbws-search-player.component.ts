@@ -21,10 +21,11 @@ export class BbwsSearchPlayerComponent implements OnInit {
 
   searchPAForPlayer(player:string) {
     console.log( "in = " + player);
-    this.plateAppearances = this.service.list( player);
+    this.service.list( player).subscribe(
+      data => this.plateAppearances = data
+    )
 
     this.plateAppearances.forEach(element => {
-      console.log( "out.message = " + element.message);
       console.log( "out.what = " + element.what + " " + element.where);
     });
     
