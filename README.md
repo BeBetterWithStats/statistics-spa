@@ -25,3 +25,22 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+# Le projet
+
+## Importation du projet
+1. Créer une arborescence \<root\>/Documents/Developpement/Bbws/
+2. `git config --global user.name bebetterwithstats@gmail.com`
+3. `git clone <mettre_ici_url_du_git_projet>`
+4. Ouvrir le répertoire nouvellement créé dans VSCode
+
+
+## Lignes de commandes utiles
+1. Lancer le serveur : `ng serve --o`
+2. Créer un nouveau composant vide : `ng generate component <mettre_ici_nom_personnalisé_composant>`
+3. Créer un nouveau composant sur base angular : `g generate @angular/material:<nom_du_component_material> --name=<mettre_ici_nom_personnalisé_composant>`
+4. Possible d'ajouter un préfixe sur l'organisation : `ng generate --prefix <prefixe_autre_que_app> component <mettre_ici_nom_personnalisé_composant>`
+5. Créer un nouveau service vide : `ng generate service <mettre_ici_nom_personnalisé_service>`
+
+
