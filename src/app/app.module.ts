@@ -10,15 +10,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BbwsMenuComponent } from './bbws-menu/bbws-menu.component';
 import { BbwsSearchPlayerComponent } from './bbws-search-player/bbws-search-player.component';
-import { BbwsPaListComponent } from './bbws-pa-list/bbws-pa-list.component';
 import { BbwsPlateappearancesService} from './bbws-plateappearances.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     BbwsMenuComponent,
-    BbwsSearchPlayerComponent,
-    BbwsPaListComponent
+    BbwsSearchPlayerComponent
   ],
   imports: [
     BrowserModule,

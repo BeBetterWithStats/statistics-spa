@@ -12,22 +12,23 @@ export class BbwsSearchPlayerComponent implements OnInit {
 
   plateAppearances = [];
 
-  constructor( private service:BbwsPlateappearancesService) { 
-  }
+  constructor( private service:BbwsPlateappearancesService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 
   searchPAForPlayer(player:string) {
-    console.log( "in = " + player);
+    console.log( "BbwsSearchPlayerComponent.searchPAForPlayer.INFO -> IN = " 
+                      + " player: " + player);
+    
     this.service.list( player).subscribe(
       data => this.plateAppearances = data
     )
 
     this.plateAppearances.forEach(element => {
-      console.log( "out.what = " + element.what + " " + element.where);
+      console.log( "BbwsSearchPlayerComponent.searchPAForPlayer.INFO -> OUT = " 
+                      + " what: " + element.what 
+                      + " where:" + element.where);
     });
-    
   }
 }

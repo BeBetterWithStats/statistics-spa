@@ -5,12 +5,6 @@
   <button mat-flat-button color="primary" (click)="searchPAForPlayer(player)">Search</button>
 </form>
 
-<!--
-<div class="example-button-row">
-  <button mat-flat-button color="primary" (click)="searchPAForPlayer(player)">Search</button>
-</div>
--->
-
 <ul>
   <li *ngFor="let plateAppearance of plateAppearances">
     <div *ngIf="plateAppearance.error; else error">{{ plateAppearance.message }}</div>
