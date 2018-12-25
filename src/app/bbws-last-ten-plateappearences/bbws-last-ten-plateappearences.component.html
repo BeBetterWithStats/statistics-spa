@@ -1,9 +1,9 @@
-<form class="example-form">
-  <mat-form-field class="example-full-width">
-    <input matInput value="" name="player" [(ngModel)]="player" >
-  </mat-form-field>
-  <button mat-flat-button color="primary" (click)="searchPAForPlayer(player)">Search</button>
-</form>
+<div class="bbws-header">
+  <form>
+    <input class="bbws-input-text" type="text" placeholder="Search a player on bbws" value="" name="player" [(ngModel)]="player">
+    <button class="bbws-btn" (click)="search(player)">Search</button>
+  </form>
+</div>
 
 <ul>
   <li *ngFor="let plateAppearance of plateAppearances">

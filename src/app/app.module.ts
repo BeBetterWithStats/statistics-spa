@@ -9,14 +9,14 @@ import { DemoMaterialModule } from './material-module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BbwsMenuComponent } from './bbws-menu/bbws-menu.component';
-import { BbwsSearchPlayerComponent } from './bbws-search-player/bbws-search-player.component';
 import { BbwsPlateappearancesService} from './bbws-plateappearances.service';
+import { BbwsLastTenPlateappearencesComponent } from './bbws-last-ten-plateappearences/bbws-last-ten-plateappearences.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BbwsMenuComponent,
-    BbwsSearchPlayerComponent
+    BbwsLastTenPlateappearencesComponent
   ],
   imports: [
     BrowserModule,

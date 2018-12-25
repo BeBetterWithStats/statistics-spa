@@ -28,4 +28,17 @@ export class BbwsPlateappearancesService {
     console.log("BbwsPlateappearancesService.list.INFO -> http service: " + url);
     return this.http.get( url);
   }
+
+  listLastTen(player:string):Observable<any> {
+
+    if ( player == undefined) {
+      // if not search term, return empty array.
+      console.log("BbwsPlateappearancesService.list.ERROR -> Player must not be empty");
+      return of([]);
+    }
+
+    const url = `${this.base_url}/pa?search=${player}&limit=10`;
+    console.log("BbwsPlateappearancesService.list.INFO -> http service: " + url);
+    return this.http.get( url);
+  }
 }

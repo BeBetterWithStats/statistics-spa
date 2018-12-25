@@ -1,0 +1,30 @@
+.bbws-header {
+    background-color: rgb(71, 136, 135);
+    padding: 10px;
+    text-align: right;
+}
+
+.bbws-input-text {
+    border: 3px solid white;
+    background-color: white;
+    padding : 10px 15px;
+    border-radius: 36px;
+    color: rgb(13, 63, 62);
+    width: 240px;
+}
+
+.bbws-btn {
+    position: absolute;
+    right: 10px;
+    color: white;
+    background-color: rgb(254, 111, 117);
+    border: 3px solid white;
+    padding : 10px 15px;
+    border-radius: 50px;
+    font-weight: lighter;
+    z-index: 1;
+}
+
+.bbws-btn:hover {
+    opacity: .9;
+}

@@ -38,9 +38,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Lignes de commandes utiles
 1. Lancer le serveur : `ng serve --o`
-2. Créer un nouveau composant vide : `ng generate component <mettre_ici_nom_personnalisé_composant>`
-3. Créer un nouveau composant sur base angular : `g generate @angular/material:<nom_du_component_material> --name=<mettre_ici_nom_personnalisé_composant>`
-4. Possible d'ajouter un préfixe sur l'organisation : `ng generate --prefix <prefixe_autre_que_app> component <mettre_ici_nom_personnalisé_composant>`
-5. Créer un nouveau service vide : `ng generate service <mettre_ici_nom_personnalisé_service>`
+2. Créer un nouveau composant vide : `ng generate --prefix <prefixe_autre_que_app> component <mettre_ici_nom_personnalisé_composant>`
+3. Créer un nouveau composant sur base angular : `g generate --prefix <prefixe_autre_que_app> @angular/material:<nom_du_component_material> --name=<mettre_ici_nom_personnalisé_composant>`
+4. Créer un nouveau service vide : `ng generate service <mettre_ici_nom_personnalisé_service>`
 
 
