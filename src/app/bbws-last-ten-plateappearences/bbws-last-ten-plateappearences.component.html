@@ -1,13 +1,13 @@
-<div class="bbws-header">
-  <form>
-    <input class="bbws-input-text" type="text" placeholder="Search a player on bbws" value="" name="player" [(ngModel)]="player">
-    <button class="bbws-btn" (click)="search(player)">Search</button>
-  </form>
-</div>
+<div class="bbws-last-ten">
+    <form class="bbws-header">
+      <input class="bbws-input-text" type="text" placeholder="Search a player" value="" name="player" [(ngModel)]="player">
+      <button class="bbws-btn" (click)="search(player)">Last 10</button>
+    </form>
 
-<ul>
-  <li *ngFor="let plateAppearance of plateAppearances">
-    <div *ngIf="plateAppearance.error; else error">{{ plateAppearance.message }}</div>
-    <ng-template #error>{{ plateAppearance.when }} - {{ plateAppearance.what }} {{ plateAppearance.where }}</ng-template>
-  </li>
-</ul>
+  <ul>
+    <li *ngFor="let plateAppearance of plateAppearances">
+      <div *ngIf="plateAppearance.error; else error">{{ plateAppearance.message }}</div>
+      <ng-template #error>{{ plateAppearance.when }} - {{ plateAppearance.what }} {{ plateAppearance.where }}</ng-template>
+    </li>
+  </ul>
+</div>
