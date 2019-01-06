@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BbwsPlateappearancesService} from '../bbws-plateappearances.service';
+import { stringify } from '@angular/core/src/render3/util';
 
 @Component({
   selector: 'bbws-bbws-last-ten-plateappearences',
@@ -8,25 +9,38 @@ import { BbwsPlateappearancesService} from '../bbws-plateappearances.service';
 })
 export class BbwsLastTenPlateappearencesComponent implements OnInit {
 
-  plateAppearances = [];
+  private error = { isError: false, message: ''};
+  private plateAppearances = [];
 
-  constructor(private service:BbwsPlateappearancesService) { }
+  constructor( private service:BbwsPlateappearancesService) { }
 
   ngOnInit() {
   }
-
-  search(player:string) {
+  
+  search() {
     console.log( "BbwsLastTenPlateappearencesComponent.search.DEBUG -> IN = " 
-                      + " player: " + player);
+                      + " player: " + this.service.playerID);
     
-    this.service.listLastTen( player).subscribe(
-      data => this.plateAppearances = data
-    )
+    this.service.listLastTen(this.service.playerID).subscribe(
+      data => {
 
-    this.plateAppearances.forEach(element => {
-      console.log( "BbwsLastTenPlateappearencesComponent.search.DEBUG -> OUT = " 
-                      + " what: " + element.what 
-                      + " where:" + element.where);
-    });
+        this.plateAppearances = data;
+
+        if (this.plateAppearances.length === 0) {
+          this.error.isError = true;
+          this.error.message = "No result for " + this.service.playerID;
+          console.log( "BbwsLastTenPlateappearencesComponent.search.DEBUG -> OUT = " + this.error.message); 
+        } else {
+          this.error.isError = false;
+          this.error.message = "";
+
+          this.plateAppearances.forEach(element => {
+            console.log( "BbwsLastTenPlateappearencesComponent.search.DEBUG -> OUT = " 
+                            + " what: " + element.what 
+                            + " where:" + element.where);
+          });
+        }
+      }
+    );
   }
 }

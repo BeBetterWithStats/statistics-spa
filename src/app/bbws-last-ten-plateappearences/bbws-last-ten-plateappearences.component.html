@@ -1,13 +1,13 @@
 <div class="bbws-last-ten">
-    <form class="bbws-header">
-      <input class="bbws-input-text" type="text" placeholder="Search a player" value="" name="player" [(ngModel)]="player">
-      <button class="bbws-btn" (click)="search(player)">Last 10</button>
+    <form #lastTenForm="ngForm" class="bbws-header" autocomplete="off">
+      <input class="bbws-input-text" name="player" #player="ngModel" [(ngModel)]="service.playerID" required placeholder="Search a player">
+      <!-- <div class="bbws-validation-error" *ngIf="player.invalid">A name is required.</div> -->
+      <button name="lasttenbtn" class="bbws-btn" (click)="search()" [disabled]="lastTenForm.invalid">Last 10</button>
     </form>
 
-  <ul>
-    <li *ngFor="let plateAppearance of plateAppearances">
-      <div *ngIf="plateAppearance.error; else error">{{ plateAppearance.message }}</div>
-      <ng-template #error>{{ plateAppearance.when }} - {{ plateAppearance.what }} {{ plateAppearance.where }}</ng-template>
-    </li>
-  </ul>
+  <div *ngIf="error.isError === true; else lastTen">{{ error.message }}</div>
+  <ng-template #lastTen>
+    <ul><li *ngFor="let plateAppearance of plateAppearances">{{ plateAppearance.when }} - {{ plateAppearance.what }} {{ plateAppearance.where }}</li></ul>
+  </ng-template>
+
 </div>
