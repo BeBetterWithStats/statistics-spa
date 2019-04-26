@@ -11,12 +11,23 @@ import { AppComponent } from './app.component';
 import { BbwsMenuComponent } from './bbws-menu/bbws-menu.component';
 import { BbwsPlateappearancesService} from './bbws-plateappearances.service';
 import { BbwsLastTenPlateappearencesComponent } from './bbws-last-ten-plateappearences/bbws-last-ten-plateappearences.component';
+import { MatTableModule} from '@angular/material';
+import { DataTableComponent } from './data-table/data-table.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     BbwsMenuComponent,
-    BbwsLastTenPlateappearencesComponent
+    BbwsLastTenPlateappearencesComponent,
+    DataTableComponent,
+    DashboardComponent,
+
+
+
   ],
   imports: [
     BrowserModule,
@@ -24,7 +35,9 @@ import { BbwsLastTenPlateappearencesComponent } from './bbws-last-ten-plateappea
     BrowserAnimationsModule,
     DemoMaterialModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule,
+
   ],
   providers: [BbwsPlateappearancesService],
   bootstrap: [AppComponent]

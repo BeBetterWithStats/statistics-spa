@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { BbwsPlateappearancesService} from '../bbws-plateappearances.service';
 import { stringify } from '@angular/core/src/render3/util';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+
+
 
 @Component({
   selector: 'bbws-bbws-last-ten-plateappearences',
@@ -10,17 +13,19 @@ import { stringify } from '@angular/core/src/render3/util';
 export class BbwsLastTenPlateappearencesComponent implements OnInit {
 
   private error = { isError: false, message: ''};
-  private plateAppearances = [];
+  public plateAppearances = [];
 
-  constructor( private service:BbwsPlateappearancesService) { }
+
+  constructor( private service: BbwsPlateappearancesService) { }
 
   ngOnInit() {
   }
-  
+
+
   search() {
-    console.log( "BbwsLastTenPlateappearencesComponent.search.DEBUG -> IN = " 
+    console.log( "BbwsLastTenPlateappearencesComponent.search.DEBUG -> IN = "
                       + " player: " + this.service.playerID);
-    
+
     this.service.listLastTen(this.service.playerID).subscribe(
       data => {
 
@@ -29,18 +34,20 @@ export class BbwsLastTenPlateappearencesComponent implements OnInit {
         if (this.plateAppearances.length === 0) {
           this.error.isError = true;
           this.error.message = "No result for " + this.service.playerID;
-          console.log( "BbwsLastTenPlateappearencesComponent.search.DEBUG -> OUT = " + this.error.message); 
+          console.log( "BbwsLastTenPlateappearencesComponent.search.DEBUG -> OUT = " + this.error.message);
         } else {
           this.error.isError = false;
           this.error.message = "";
 
           this.plateAppearances.forEach(element => {
-            console.log( "BbwsLastTenPlateappearencesComponent.search.DEBUG -> OUT = " 
-                            + " what: " + element.what 
+            console.log( "BbwsLastTenPlateappearencesComponent.search.DEBUG -> OUT = "
+                            + " what: " + element.what
                             + " where:" + element.where);
+
           });
         }
       }
     );
   }
+
 }
