@@ -1,24 +1,25 @@
 
-<div>
-    <mat-table  [dataSource]="data" matSort  class="tata">
+
+    <mat-table  [dataSource]="data " matSort  >
 
       <ng-container matColumnDef="date">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>date</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef >date</mat-header-cell>
         <mat-cell *matCellDef="let row">{{row.game | date:'MMM d, y, h:mm:ss' }}</mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="when">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>when</mat-header-cell>
+      <ng-container matColumnDef="when" >
+
+        <mat-header-cell *matHeaderCellDef  mat-sort-header="when"  >when</mat-header-cell>
         <mat-cell *matCellDef="let row">{{row.when  }}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="what">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>what</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef >what</mat-header-cell>
         <mat-cell *matCellDef="let row">{{row.what}}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="where">
-        <mat-header-cell *matHeaderCellDef  mat-sort-header>where</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef  >where</mat-header-cell>
         <mat-cell *matCellDef="let row">{{row.where}} </mat-cell>
       </ng-container>
 
@@ -27,7 +28,15 @@
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
-</div>
+
+
+
+
+
+
+
+
+
 
 
 

@@ -11,9 +11,14 @@ import { AppComponent } from './app.component';
 import { BbwsMenuComponent } from './bbws-menu/bbws-menu.component';
 import { BbwsPlateappearancesService} from './bbws-plateappearances.service';
 import { BbwsLastTenPlateappearencesComponent } from './bbws-last-ten-plateappearences/bbws-last-ten-plateappearences.component';
-import { MatTableModule} from '@angular/material';
+import { MatTableModule, MatPaginatorModule, MatSortModule} from '@angular/material';
 import { DataTableComponent } from './data-table/data-table.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { Ng2OrderModule} from 'ng2-order-pipe';
+import {NgxPaginationModule} from 'ngx-pagination';
+
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { ReactiveFormsModule} from  '@angular/forms';
 
 
 
@@ -28,6 +33,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 
+
+
+
+
   ],
   imports: [
     BrowserModule,
@@ -37,6 +46,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FormsModule,
     HttpClientModule,
     MatTableModule,
+    Ng2OrderModule,
+    NgxPaginationModule,
+    HttpClientInMemoryWebApiModule,
+    ReactiveFormsModule,
+    MatPaginatorModule,
+    MatSortModule,
+
+
+
 
   ],
   providers: [BbwsPlateappearancesService],
