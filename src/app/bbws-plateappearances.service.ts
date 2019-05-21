@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-
-
+import { APIS} from './apis';
+import { map} from 'rxjs/operators';
 
 
 @Injectable({
@@ -10,55 +10,37 @@ import { Observable, of } from 'rxjs';
 })
 export class BbwsPlateappearancesService {
 
-  public playerID = undefined;
+
+  public plateAppeareances: any;
   requestUrl: string;
   submitted = false;
    sort = 'asc';
-   sort1 = '';
-  private readonly base_url = 'http://localhost:8080/bbws/api';
 
 
   constructor(private http: HttpClient) { }
-  list(player: string): Observable<any> {
-
-    if ( player === undefined) {
-      // if not search term, return empty array.
-      console.log("BbwsPlateappearancesService.list.ERROR -> Player must not be empty");
-      return of([]);
-    }
-
-    this.requestUrl = `${this.base_url}/pa?search=${player}`;
-    console.log("BbwsPlateappearancesService.list.INFO -> http service: " + this.requestUrl);
-    return this.http.get( this.requestUrl);
-  }
 
   listLastTen(playerID: string): Observable<any> {
 
     if ( playerID === undefined ) {
-      // if not search term, return empty array.
-      console.log("BbwsPlateappearancesService.list.ERROR -> Player must not be empty");
       return of([]);
     }
-
-    // this.requestUrl = `${this.base_url}/pa?search=${this.playerID}&limit=10`;
-    this.requestUrl = `${this.base_url}/pa?search=${this.playerID}&limit=10&sort=${this.sort}`;
-    console.log("BbwsPlateappearancesService.list.INFO -> http service: " + this.requestUrl);
+    this.requestUrl = `${APIS.BASE_URL}/pa?search=${playerID}&limit=10&sort=${this.sort}`;
     this.submitted = true;
-    return this.http.get(this.requestUrl);
-  }
-  listLastTenDesc(playerID: string): Observable<any> {
 
-    if ( playerID === undefined ) {
-      // if not search term, return empty array.
-      console.log("BbwsPlateappearancesService.list.ERROR -> Player must not be empty");
-      return of([]);
-    }
-
-    // this.requestUrl = `${this.base_url}/pa?search=${this.playerID}&limit=10`;
-    this.requestUrl = `${this.base_url}/pa?search=${this.playerID}&limit=10&sort=${this.sort1}`;
-    console.log("BbwsPlateappearancesService.list.INFO -> http service: " + this.requestUrl);
-    this.submitted = true;
-    return this.http.get(this.requestUrl);
+    this.http.get(this.requestUrl).subscribe(data => {
+      this.plateAppeareances = data;
+    });
   }
+
+listAll(){
+    return this.http.get(APIS.PLAYERS).pipe(
+        map(data => {
+        console.log(data);
+        return data;
+      })
+    );
+}
+
+
 
 }

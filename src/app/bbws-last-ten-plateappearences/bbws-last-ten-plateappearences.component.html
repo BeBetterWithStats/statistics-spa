@@ -1,27 +1,15 @@
 
-    <!--<form #lastTenForm="ngForm" class="bbws-header" autocomplete="off">-->
-      <!--<input class="bbws-input-text" name="player" #player="ngModel" [(ngModel)]="service.playerID "   required placeholder="Search a player">-->
-       <!--&lt;!&ndash;<div class="bbws-validation-error" *ngIf="player.invalid">A name is required.</div>&ndash;&gt;-->
-      <!--<button name="lasttenbtn" class="bbws-btn" (click)="search()" [disabled]="lastTenForm.invalid">Last 10</button>-->
-    <!--</form>-->
-    <div>
-          <form [formGroup]="stateForm" class="bbws-header">
+    <form #lastTenForm="ngForm" class="bbws-header" autocomplete="off">
+      <input type="text" matInput placeholder="Search player" class="bbws-input-text" name="player" (ngModelChange)="retrieveValue($event)" [(ngModel)]="inputValue"  [matAutocomplete]="auto"  >
 
+        <mat-autocomplete #auto ="matAutocomplete">
+          <mat-option *ngFor ="let element of autoCompleteTab" [value]="element">
+            {{element}}
+          </mat-option>
+        </mat-autocomplete>
 
-              <input type="text" matInput placeholder="Search player" formControlName="stateGroup" class="bbws-input-text" name="player"  [(ngModel)]="service.playerID " required [matAutocomplete]="autoGroup"  >
+      <button name="lasttenbtn" class="bbws-btn" (click)="search()" [disabled]="lastTenForm.invalid">Last 10</button>
+    </form>
 
-                <mat-autocomplete #autoGroup="matAutocomplete">
-                  <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
-                    <mat-option *ngFor="let name of group.names" [value]="name">
-                      {{name}}
-                    </mat-option>
-                </mat-optgroup>
-              </mat-autocomplete>
-
-                 <button name="lasttenbtn" class="bbws-btn" (click)="search()" >ASC</button>
-            <button name="lasttenbtn" class="bbws-btn" (click)="search2()" >DESC</button>
-            <button class="bbws-btn" (click)="refresh()">Nouvelle recherche</button>
-          </form>
        <div *ngIf="error.isError === true; else lastTen">{{ error.message }}</div>
 
-    </div>
