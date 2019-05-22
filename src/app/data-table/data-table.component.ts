@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 
 import { BbwsPlateappearancesService} from '../bbws-plateappearances.service';
 
@@ -8,17 +8,22 @@ import { BbwsPlateappearancesService} from '../bbws-plateappearances.service';
   templateUrl: './data-table.component.html',
   styleUrls: ['./data-table.component.css']
 })
-export class DataTableComponent implements OnInit   {
+export class DataTableComponent implements OnInit {
+
+
   displayedColumns = ['date', 'when', 'what', 'where'];
 
   @Input () requestUrl: string;
 
 
-  constructor(private service: BbwsPlateappearancesService) {}
+  constructor(private service: BbwsPlateappearancesService) {
+  }
 
   ngOnInit() {
 
     this.service.listLastTen (this.requestUrl);
+
+
   }
 }
 

@@ -21,7 +21,7 @@ export class BbwsPlateappearancesService {
 
   listLastTen(playerID: string): Observable<any> {
 
-    if ( playerID === undefined ) {
+    if (playerID === undefined ) {
       return of([]);
     }
     this.requestUrl = `${APIS.BASE_URL}/pa?search=${playerID}&limit=10&sort=${this.sort}`;
