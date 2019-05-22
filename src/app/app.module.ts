@@ -11,12 +11,32 @@ import { AppComponent } from './app.component';
 import { BbwsMenuComponent } from './bbws-menu/bbws-menu.component';
 import { BbwsPlateappearancesService} from './bbws-plateappearances.service';
 import { BbwsLastTenPlateappearencesComponent } from './bbws-last-ten-plateappearences/bbws-last-ten-plateappearences.component';
+import { MatTableModule, MatPaginatorModule, MatSortModule} from '@angular/material';
+import { DataTableComponent } from './data-table/data-table.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { Ng2OrderModule} from 'ng2-order-pipe';
+import {NgxPaginationModule} from 'ngx-pagination';
+
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { ReactiveFormsModule} from  '@angular/forms';
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     BbwsMenuComponent,
-    BbwsLastTenPlateappearencesComponent
+    BbwsLastTenPlateappearencesComponent,
+    DataTableComponent,
+    DashboardComponent,
+
+
+
+
+
+
+
   ],
   imports: [
     BrowserModule,
@@ -24,7 +44,18 @@ import { BbwsLastTenPlateappearencesComponent } from './bbws-last-ten-plateappea
     BrowserAnimationsModule,
     DemoMaterialModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule,
+    Ng2OrderModule,
+    NgxPaginationModule,
+    HttpClientInMemoryWebApiModule,
+    ReactiveFormsModule,
+    MatPaginatorModule,
+    MatSortModule,
+
+
+
+
   ],
   providers: [BbwsPlateappearancesService],
   bootstrap: [AppComponent]

@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { BbwsPlateappearancesService} from '../bbws-plateappearances.service';
-import { stringify } from '@angular/core/src/render3/util';
 
 @Component({
   selector: 'bbws-bbws-last-ten-plateappearences',
@@ -10,37 +9,38 @@ import { stringify } from '@angular/core/src/render3/util';
 export class BbwsLastTenPlateappearencesComponent implements OnInit {
 
   private error = { isError: false, message: ''};
-  private plateAppearances = [];
+  playersList: any;
+  autoCompleteTab: any;
+  inputValue: string;
 
-  constructor( private service:BbwsPlateappearancesService) { }
+
+  constructor( private service: BbwsPlateappearancesService) {
+
+  }
+
+
 
   ngOnInit() {
-  }
-  
+
+      this.service.listAll().subscribe(res => {
+       this.playersList = res;
+        console.log('playersList', this.playersList);
+        this.autoCompleteTab = Object.assign([], this.playersList);
+      });
+    }
+
   search() {
-    console.log( "BbwsLastTenPlateappearencesComponent.search.DEBUG -> IN = " 
-                      + " player: " + this.service.playerID);
-    
-    this.service.listLastTen(this.service.playerID).subscribe(
-      data => {
+    console.log( 'BbwsLastTenPlateappearencesComponent.search.DEBUG -> IN = '
+                      + ' player: ' + this.inputValue);
+    this.service.listLastTen(this.inputValue);
+}
 
-        this.plateAppearances = data;
-
-        if (this.plateAppearances.length === 0) {
-          this.error.isError = true;
-          this.error.message = "No result for " + this.service.playerID;
-          console.log( "BbwsLastTenPlateappearencesComponent.search.DEBUG -> OUT = " + this.error.message); 
-        } else {
-          this.error.isError = false;
-          this.error.message = "";
-
-          this.plateAppearances.forEach(element => {
-            console.log( "BbwsLastTenPlateappearencesComponent.search.DEBUG -> OUT = " 
-                            + " what: " + element.what 
-                            + " where:" + element.where);
-          });
-        }
-      }
-    );
+  retrieveValue(value) {
+    if (value) {
+      this.autoCompleteTab = this.playersList.filter (p => p.includes (value.toUpperCase ()));
+    } else {
+      this.autoCompleteTab = Object.assign([], this.playersList);
+    }
   }
 }
+

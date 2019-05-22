@@ -16,6 +16,8 @@
     color: #000000;
     width: 180px;
     font-size: .9em;
+
+
 }
 
 .bbws-input-text::placeholder {
@@ -23,9 +25,6 @@
 }
 
 .bbws-btn {
-    /*position: absolute;
-    top: 52px;
-    right: 8px;*/
     color: white;
     background-color: #6496d1;
     border: 1px solid #6496d1;
@@ -34,12 +33,12 @@
     font-weight: lighter;
     z-index: 1;
     font-size: 1em;
-    margin-left: 10px;
+    margin-left: 3em;
 }
 
 .bbws-btn:hover {
     opacity: .9;
-    background-color: #fec10e;
+    background-color: lawngreen;
     border: 1px solid #fec10e;
-    
+
 }

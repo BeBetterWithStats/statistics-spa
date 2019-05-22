@@ -1,13 +1,15 @@
-<div class="bbws-last-ten">
+
     <form #lastTenForm="ngForm" class="bbws-header" autocomplete="off">
-      <input class="bbws-input-text" name="player" #player="ngModel" [(ngModel)]="service.playerID" required placeholder="Search a player">
-      <!-- <div class="bbws-validation-error" *ngIf="player.invalid">A name is required.</div> -->
+      <input type="text" matInput placeholder="Search player" class="bbws-input-text" name="player" (ngModelChange)="retrieveValue($event)" [(ngModel)]="inputValue"  [matAutocomplete]="auto"  >
+
+        <mat-autocomplete #auto ="matAutocomplete">
+          <mat-option *ngFor ="let element of autoCompleteTab" [value]="element">
+            {{element}}
+          </mat-option>
+        </mat-autocomplete>
+
       <button name="lasttenbtn" class="bbws-btn" (click)="search()" [disabled]="lastTenForm.invalid">Last 10</button>
     </form>
 
-  <div *ngIf="error.isError === true; else lastTen">{{ error.message }}</div>
-  <ng-template #lastTen>
-    <ul><li *ngFor="let plateAppearance of plateAppearances">{{ plateAppearance.when }} - {{ plateAppearance.what }} {{ plateAppearance.where }}</li></ul>
-  </ng-template>
+       <div *ngIf="error.isError === true; else lastTen">{{ error.message }}</div>
 
-</div>
