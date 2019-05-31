@@ -14,10 +14,10 @@ import { BbwsLastTenPlateappearencesComponent } from './bbws-last-ten-plateappea
 import { MatTableModule, MatPaginatorModule, MatSortModule} from '@angular/material';
 import { DataTableComponent } from './data-table/data-table.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { Ng2OrderModule} from 'ng2-order-pipe';
-import {NgxPaginationModule} from 'ngx-pagination';
+// import { Ng2OrderModule} from 'ng2-order-pipe';
+// import {NgxPaginationModule} from 'ngx-pagination';
 
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+// import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { ReactiveFormsModule} from  '@angular/forms';
 
 
@@ -46,9 +46,9 @@ import { ReactiveFormsModule} from  '@angular/forms';
     FormsModule,
     HttpClientModule,
     MatTableModule,
-    Ng2OrderModule,
-    NgxPaginationModule,
-    HttpClientInMemoryWebApiModule,
+    // Ng2OrderModule,
+    // NgxPaginationModule,
+    // HttpClientInMemoryWebApiModule,
     ReactiveFormsModule,
     MatPaginatorModule,
     MatSortModule,
