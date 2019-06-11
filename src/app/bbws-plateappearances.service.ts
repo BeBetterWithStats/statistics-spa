@@ -1,21 +1,18 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { APIS} from './apis';
-import { map} from 'rxjs/operators';
-
+import { API } from './api';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BbwsPlateappearancesService {
 
-
   public plateAppeareances: any;
   requestUrl: string;
   submitted = false;
-   sort = 'asc';
-
+  sort = '';
 
   constructor(private http: HttpClient) { }
 
@@ -24,7 +21,7 @@ export class BbwsPlateappearancesService {
     if ( playerID === undefined ) {
       return of([]);
     }
-    this.requestUrl = `${APIS.BASE_URL}/pa?search=${playerID}&limit=10&sort=${this.sort}`;
+    this.requestUrl = `${API.BASE_URL}${API.PLATE_APPEARANCES}?search=${playerID}&limit=100&sort=${this.sort}`;
     this.submitted = true;
 
     this.http.get(this.requestUrl).subscribe(data => {
@@ -32,15 +29,15 @@ export class BbwsPlateappearancesService {
     });
   }
 
-listAll(){
-    return this.http.get(APIS.PLAYERS).pipe(
-        map(data => {
+  listAll(){
+    
+    this.requestUrl = `${API.BASE_URL}${API.PLAYERS}`;
+        
+    return this.http.get(this.requestUrl).pipe(
+      map(data => {
         console.log(data);
         return data;
       })
     );
-}
-
-
-
+  }
 }
